@@ -1,3 +1,5 @@
 const saludar = require('./saludo');
 
-console.log(saludar('Inadaptado'));
+const nombre = process.argv[2];
+
+console.log(saludar( nombre ? nombre : 'Inadaptado'));
