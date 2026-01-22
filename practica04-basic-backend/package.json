@@ -1,0 +1,16 @@
+{
+  "name": "basic-backend",
+  "version": "1.0.0",
+  "description": "This is a basic",
+  "license": "ISC",
+  "author": "@axelintu",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dayjs": "^1.11.19"
+  }
+}
