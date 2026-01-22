@@ -1,0 +1,25 @@
+html {
+    background-color: rgb(39, 39, 39);
+    color: rgb(154, 154, 154);
+    padding: 100px;
+}
+h1 {
+    /* font-size: 14em; */
+    margin: 0;
+    padding: .25em 0;
+}
+p {
+    /* font-size: 7em; */
+    margin: 0;
+}
+
+.menu {
+    list-style-type: none;
+    display: inline-block;
+}
+.menu li {
+    display: inline;
+}
+.menu a {
+    color: white;
+}
