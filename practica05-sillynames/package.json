@@ -1,17 +1,16 @@
 {
   "name": "practica05-sillynames",
   "version": "1.0.0",
-  "description": "",
+  "author": "@axelintu",
   "main": "index.js",
-  "dependencies": {
-    "sillyname": "^0.1.0"
-  },
-  "devDependencies": {},
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "@axelintu",
-  "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "sillyname": "^0.1.0"
+  }
 }
