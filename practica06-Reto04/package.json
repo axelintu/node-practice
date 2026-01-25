@@ -1,0 +1,12 @@
+{
+  "name": "practica06-reto04",
+  "version": "1.0.0",
+  "description": "An Express.js server",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
