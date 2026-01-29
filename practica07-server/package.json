@@ -1,0 +1,13 @@
+{
+  "name": "clase5",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "@axelintu",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "array": "node server_array.js"
+  }
+}
