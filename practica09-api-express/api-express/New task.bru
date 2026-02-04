@@ -1,0 +1,28 @@
+meta {
+  name: New task
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/tasks
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "desc": "Esta tarea es nueva"
+  }
+}
+
+body:text {
+  {
+    "desc": "Esta tarea es nueva"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
