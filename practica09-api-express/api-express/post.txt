@@ -1,0 +1,4 @@
+curl http://localhost:3000/api/tasks --header "Content-Type: application/json" \
+  --data '{
+  "desc": "Esta tarea es nueva"
+}'

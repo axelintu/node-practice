@@ -38,7 +38,7 @@ app.get("/api/tasks/:id", (req, res) => {
 // RUTA 3: POST (Crear una nueva tarea)
 // URL: /api/tasks
 app.post("/api/tasks", (req, res) => {
-    const { desc } = req.body;
+    const desc = req.body.desc;
     if (!desc) {
         res.status(400).json({ error: "Description is required."});
     }

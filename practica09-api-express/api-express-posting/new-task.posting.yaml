@@ -1,0 +1,12 @@
+name: New task
+method: POST
+url: http://localhost:3000/api/tasks
+body:
+  content: |-
+    {
+      "desc": "Esta tarea es nueva"
+    }
+  content_type: application/json
+headers:
+- name: content-type
+  value: application/json
