@@ -1,0 +1,5 @@
+name: getUser
+url: http://localhost:3000/users/:id
+path_params:
+- name: id
+  value: '3'

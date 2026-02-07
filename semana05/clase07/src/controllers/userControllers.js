@@ -61,7 +61,7 @@ export const createUser = (req, res) => {
     const name = validateName(req,res);
     if (name === null || null === undefined) return; 
     
-    const nextId = users.length ? Math.max(...users.map(u=u.id)) + 1 : 1;
+    const nextId = users.length ? Math.max(...users.map(u=>u.id)) + 1 : 1;
     const newUser = { id: nextId, name };
     users.push(newUser);
 
@@ -93,6 +93,6 @@ export const deleteUser = (req, res) => {
     if (index === -1) {
         return res.status(404).json({message: "El id no existe"});
     }
-    users.slice(index, 1);
+    users.splice(index, 1);
     return res.json(users);
 }
