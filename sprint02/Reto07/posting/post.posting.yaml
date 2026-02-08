@@ -1,0 +1,13 @@
+name: Post
+method: POST
+url: http://localhost:3000/notes
+body:
+  content: |-
+    {
+      "title": "Nota nueva",
+      "content": "El contenido de esta nota es suficientemente largo"
+    }
+  content_type: application/json
+headers:
+- name: content-type
+  value: application/json

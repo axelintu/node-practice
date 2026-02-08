@@ -1,0 +1,15 @@
+name: Put Content
+method: PUT
+url: http://localhost:3000/notes/:id
+body:
+  content: |-
+    {
+      "content": "esta nota fue actualizada"
+    }
+  content_type: application/json
+headers:
+- name: content-type
+  value: application/json
+path_params:
+- name: id
+  value: '4'
