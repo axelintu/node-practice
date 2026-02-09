@@ -1,4 +1,9 @@
 name: Put Title
+description: |-
+  Expected:
+
+  Updated Title
+  No Content changes
 method: PUT
 url: http://localhost:3000/notes/:id
 body:

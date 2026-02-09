@@ -1,15 +1,16 @@
-name: Put Content
+name: Put invalid Title (empty)
 description: |-
-  Expected:
+  Expected
 
-  - Updated content
-  - No Title changes were done
+  No changes to title.
+  Error: Content too short.
 method: PUT
 url: http://localhost:3000/notes/:id
 body:
   content: |-
     {
-      "content": "esta nota fue actualizada"
+      "title": "",
+      "content": "Invalid"
     }
   content_type: application/json
 headers:
@@ -17,4 +18,4 @@ headers:
   value: application/json
 path_params:
 - name: id
-  value: '4'
+  value: '3'

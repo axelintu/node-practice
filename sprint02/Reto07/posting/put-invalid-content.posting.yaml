@@ -1,15 +1,14 @@
-name: Put Content
+name: Put empty content. (No Content)
 description: |-
-  Expected:
-
-  - Updated content
-  - No Title changes were done
+  Expected
+  - No changes to content: Bypass
 method: PUT
 url: http://localhost:3000/notes/:id
 body:
   content: |-
     {
-      "content": "esta nota fue actualizada"
+      "title": "Esta nota no tiene content)",
+      "content": ""
     }
   content_type: application/json
 headers:
@@ -17,4 +16,4 @@ headers:
   value: application/json
 path_params:
 - name: id
-  value: '4'
+  value: '3'

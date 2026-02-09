@@ -1,0 +1,2 @@
+name: Get by Id
+url: http://localhost:3000/notes/3
