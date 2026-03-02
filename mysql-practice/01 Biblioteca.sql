@@ -39,13 +39,16 @@ CREATE TABLE prestamo (
     FOREIGN KEY (usuarioId) REFERENCES usuario(usuarioId),
     FOREIGN KEY (libroId) REFERENCES libro(libroId)
 )
+
+
 Use biblioteca;
+
 ALTER TABLE usuario 
 MODIFY COLUMN autorId SET DEFAULT 0;
 
 
 ALTER TABLE usuario 
-change COLUMN autorId edad INT;
+CHANGE COLUMN autorId edad INT;
 
 ALTER TABLE libro
 ADD nombre VARCHAR (150) NOT NULL;
