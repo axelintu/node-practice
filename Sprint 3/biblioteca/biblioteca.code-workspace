@@ -1,0 +1,14 @@
+{
+	"folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../Reto4"
+        },
+        {
+            "path": "../../mysql-practice"
+        }
+    ],
+    "settings": {}
+}

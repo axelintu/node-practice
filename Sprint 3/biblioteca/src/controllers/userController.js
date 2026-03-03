@@ -1,16 +1,16 @@
 import pool from "../config/db.js";
 
-const getBooks = async (req, res) => {
-	const getQuery = "SELECT libroId, nombre, autorId FROM libro;";
+const getUsers = async (req, res) => {
+	const getQuery = "SELECT usuarioId, nombre, edad, direccion FROM usuario;";
 	try {
 		const [rows] = await pool.query(getQuery);
-		res.json(rows);
+		res.status(200).json(rows);
 	} catch (error) {
 		console.log(error);
-		res.status(500).json({ error: "Error consulting books"});
+		res.status(500).json({ error: "Error consulting users"});
 	}
 };
-const postBook = async (req, res) => {
+const postUser = async (req, res) => {
 	const postQuery = `INSERT INTO libro (nombre, autorId) VALUES (?, ?)`;
 	try {
 		const [result] = await pool.query(postQuery);
@@ -21,8 +21,8 @@ const postBook = async (req, res) => {
 		console.log(error);
 		res.status(500).json({ 
 			error: error.message, 
-			message: "Error trying to create a new book"});
+			message: "Error trying to create a new user"});
 	}
 };
 
-export { getBooks };
+export { getUsers };
