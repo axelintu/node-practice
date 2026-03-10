@@ -1,0 +1,13 @@
+name: updateBook
+method: PUT
+url: http://localhost:3000/api/books/10
+body:
+  content: |-
+    {
+      "name": "Libro con titulo actualizado",
+      "autorId": 3
+    }
+  content_type: application/json
+headers:
+- name: content-type
+  value: application/json
