@@ -1,12 +1,24 @@
 import Loan from "../model/Loan.js";
+import User from "../model/User.js";
+import Book from "../model/Book.js";
 
 export const getLoans = async (req, res) => {
-	const loans = await Loan.find.findAll();
+	const loans = await Loan.findAll({
+		include: [
+			{ model: User, as: "user" },
+			{ model: Book, as: "book" }
+		]
+	});
 	res.json(loans);
 }
 
 export const getLoanById = async (req, res) => {
-	const loan = await Loan.findByPk(req.params.id);
+	const loan = await Loan.findByPk(req.params.id, {
+		include: [
+			{ model: User, as: "user" },
+			{ model: Book, as: "book" }
+		]
+	});
 	if(!loan) return res.status(404).json({ error: "Loan not found"});
 	res.json(loan);
 }

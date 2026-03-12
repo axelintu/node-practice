@@ -1,12 +1,22 @@
 import Author from "../model/Author.js";
+import Book from "../model/Book.js";
+import User from "../model/User.js";
 
 export const getAuthors = async (req, res) => {
-	const authors = await Author.find.findAll();
+	const authors = await Author.findAll({
+		include : {
+			model: Book,
+			as: "books"
+		}
+	});
 	res.json(authors);
 }
 
 export const getAuthorById = async (req, res) => {
-	const author = await Author.findByPk(req.params.id);
+	const author = await Author.findByPk(req.params.id, {
+		include : 
+			{ model: Book, as: "books" }
+	});
 	if(!author) return res.status(404).json({ error: "Author not found"});
 	res.json(author);
 }

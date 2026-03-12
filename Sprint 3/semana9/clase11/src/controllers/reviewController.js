@@ -1,12 +1,30 @@
 import Review from "../model/Review.js";
+import User from "../model/User.js";
+import Book from "../model/Book.js";
+import Author from "../model/Author.js";
 
 export const getReviews = async (req, res) => {
-	const reviews = await Review.find.findAll();
+	const reviews = await Review.findAll({
+		include: [
+			{ model: User, as: "user" },
+			{ model: Book, as: "book" }
+		]
+	});
 	res.json(reviews);
 }
 
 export const getReviewById = async (req, res) => {
-	const review = await Review.findByPk(req.params.id);
+	const review = await Review.findByPk(req.params.id, {
+		include: [
+			{ model: User, as: "user" },
+			{ model: Book, as: "book",
+				include: {
+					model: Author,
+					as: "author"
+				}
+			}
+		]
+	});
 	if(!review) return res.status(404).json({ error: "Review not found"});
 	res.json(review);
 }

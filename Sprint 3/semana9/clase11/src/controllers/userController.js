@@ -1,12 +1,29 @@
 import User from "../model/User.js";
+import Review from "../model/Review.js";
+import Loan from "../model/Loan.js";
+import Book from "../model/Book.js";
+
+const extraInfo = {
+		include: [{
+			model: Review,
+			as: "reviews",
+			// include: { model: Book, as: "book" },
+		}, {
+			model: Loan,
+			as: "loans",
+			// include: { model: Book, as: "book" }
+		}],
+		benchmark: true, // Enable for this specific query
+  logging: console.log,
+	};
 
 export const getUsers = async (req, res) => {
-	const users = await User.find.findAll();
+	const users = await User.findAll(extraInfo);
 	res.json(users);
 }
 
 export const getUserById = async (req, res) => {
-	const user = await User.findByPk(req.params.id);
+	const user = await User.findByPk(req.params.id, extraInfo);
 	if(!user) return res.status(404).json({ error: "User not found"});
 	res.json(user);
 }
