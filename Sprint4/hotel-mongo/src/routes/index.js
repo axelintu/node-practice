@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import reservationRoutes from './reservationRoutes.js';
-import userRoutes from './userRoutes.js';
-import roomRoutes from './roomRoutes.js';
+import { Router } from "express";
+import reservationRoutes from "./reservationRoutes.js";
+import userRoutes from "./userRoutes.js";
+import roomRoutes from "./roomRoutes.js";
 
 const router = Router();
 

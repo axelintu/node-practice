@@ -34,8 +34,7 @@ const seedDatabase = async () => {
 		const rooms = [];
 		const roomTypes = ["simple", "family"];
 		for (let i = 1; i <= 10; i++) {
-			const type =
-				roomTypes[Math.floor(Math.random() * roomTypes.length)];
+			const type = roomTypes[Math.floor(Math.random() * roomTypes.length)];
 			const capacity =
 				type === "simple"
 					? Math.floor(Math.random() * 2) + 1
@@ -58,14 +57,10 @@ const seedDatabase = async () => {
 
 			// Generate random dates (next 30 days)
 			const startDate = new Date();
-			startDate.setDate(
-				startDate.getDate() + Math.floor(Math.random() * 30),
-			);
+			startDate.setDate(startDate.getDate() + Math.floor(Math.random() * 30));
 
 			const endDate = new Date(startDate);
-			endDate.setDate(
-				startDate.getDate() + Math.floor(Math.random() * 7) + 1,
-			); // 1-7 days
+			endDate.setDate(startDate.getDate() + Math.floor(Math.random() * 7) + 1); // 1-7 days
 
 			// Occupants should not exceed room capacity
 			const occupants = Math.floor(Math.random() * room.maxCapacity) + 1;
