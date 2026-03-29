@@ -21,32 +21,32 @@ const paymentMethodSchema = new mongoose.Schema(
 		},
 		cardNumber: {
 			type: String,
-			max: 16
+			max: 16,
 		},
 		cardHolderName: {
 			type: String,
-			trim: true
+			trim: true,
 		},
 		expiryDate: {
-			type:String
+			type: String,
 		},
 		paypalEmail: {
-			type: String
+			type: String,
 		},
 		bankName: {
-			type: String
+			type: String,
 		},
 		accountNumber: {
-			type: String
+			type: String,
 		},
 		isDefault: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		isActive: {
 			type: Boolean,
-			default: true
-		}
+			default: true,
+		},
 	},
 	{ timestamps: true },
 );

@@ -14,39 +14,39 @@ const orderSchema = new mongoose.Schema(
 					ref: "Product",
 					required: true,
 				},
-				quantity: { type:Number, required: true, min:1 },
-				price: { type: Number, required: true }
+				quantity: { type: Number, required: true, min: 1 },
+				price: { type: Number, required: true },
 			},
 		],
 		address: {
-			type:mongoose.Schema.Types.ObjectId,
-			ref:"Address",
-			required:true
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Address",
+			required: true,
 		},
 		paymentMethod: {
-			type:mongoose.Schema.Types.ObjectId,
-			ref:"PaymentMethod",
-			required:true
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "PaymentMethod",
+			required: true,
 		},
 		shippingCost: {
 			type: Number,
 			required: true,
-			default: 0
+			default: 0,
 		},
 		totalPrice: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		status: {
 			type: String,
-			enum: ["pending","processing","shipped","delivered","canceled"],
-			default: "pending"
+			enum: ["pending", "processing", "shipped", "delivered", "canceled"],
+			default: "pending",
 		},
 		paymentStatus: {
 			type: String,
-			enum: ["pending","paid","failed","refunded"],
-			default: "pending"
-		}
+			enum: ["pending", "paid", "failed", "refunded"],
+			default: "pending",
+		},
 	},
 	{
 		timestamps: true,

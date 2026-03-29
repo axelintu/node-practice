@@ -1,32 +1,28 @@
-import e from "express";
 import Address from "../models/Address.js";
 
 const getUserAddresses = async (req, res) => {
 	try {
 		const userId = req.user.userId;
 
-		const addresses = await Address
-		.find({ user: userId })
-		.sort({
+		const addresses = await Address.find({ user: userId }).sort({
 			isDefault: -1,
 			_id: -1,
 		});
 
-		res.status(200).json({addresses});
+		res.status(200).json({ addresses });
 	} catch (error) {
 		console.error(error);
 	}
 };
 
-
 const getAddressById = async (req, res) => {
 	try {
-		const {addressId} = req.params;
+		const { addressId } = req.params;
 		const userId = req.user.userId;
 
 		const address = await Address.findOne({ _id: addressId, user: userId });
 		if (!address) {
-			return res.status(404).json({ message: "Address not found"});
+			return res.status(404).json({ message: "Address not found" });
 		}
 		res.status(200).json(address);
 	} catch (error) {
@@ -47,10 +43,10 @@ const createAddress = async (req, res) => {
 			isDefault,
 			addressType,
 		} = req.body;
-		const user = req.user.userId; 
-		
-		if(isDefault) {
-			await Address.updateMany({user}, {isDefault: false})
+		const user = req.user.userId;
+
+		if (isDefault) {
+			await Address.updateMany({ user }, { isDefault: false });
 		}
 		const newAddress = new Address({
 			user,
@@ -62,7 +58,7 @@ const createAddress = async (req, res) => {
 			country: country || "México",
 			phone,
 			isDefault: isDefault || false,
-			addressType: addressType || "home"
+			addressType: addressType || "home",
 		});
 		await newAddress.save();
 
@@ -73,8 +69,8 @@ const createAddress = async (req, res) => {
 };
 const updateAddress = async (req, res) => {
 	try {
-		const {addressId} = req.params;
-		
+		const { addressId } = req.params;
+
 		const {
 			name,
 			address,
@@ -88,10 +84,13 @@ const updateAddress = async (req, res) => {
 		} = req.body;
 		const user = req.user.userId;
 
-		const shipAddress = await Address.findOne({ _id: addressId, user: userId });
+		const shipAddress = await Address.findOne({
+			_id: addressId,
+			user: userId,
+		});
 
-		if(!shipAddress) {
-			return res.status(404).json({ message: "Address not found"})
+		if (!shipAddress) {
+			return res.status(404).json({ message: "Address not found" });
 		}
 
 		if (!isDefault && !shipAddress.isDefault) {
@@ -108,20 +107,16 @@ const updateAddress = async (req, res) => {
 		shipAddress.postalCode = postalCode;
 		shipAddress.country = country || shipAddress.country;
 		shipAddress.phone = phone;
-		shipAddress.isDefault = isDefault !== undefined ? isDefault : shipAddress.isDefault; 
+		shipAddress.isDefault =
+			isDefault !== undefined ? isDefault : shipAddress.isDefault;
 		shipAddress.addressType = addressType || shipAddress.addressType;
 
 		await shipAddress.save();
 
 		res.status(200).json(shipAddress);
-	} catch (error) {
-		
-	}
+	} catch (error) {}
 };
 const deleteAddress = async (req, res) => {
 	try {
-		
-	} catch (error) {
-		
-	}
+	} catch (error) {}
 };

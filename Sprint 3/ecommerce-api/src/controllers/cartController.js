@@ -9,15 +9,15 @@ export const getCart = async (req, res) => {
 	} catch (error) {
 		console.error(error);
 	}
-}
+};
 
-export const getCartById = async (req,res) => {
+export const getCartById = async (req, res) => {
 	try {
 		const id = req.params.id;
 		const cart = await Cart.findById(id)
 			.populate("user")
 			.populate("products.product");
-		if(!cart){
+		if (!cart) {
 			return res.status(404).json({ message: "Cart not found" });
 		}
 		res.json(cart);
@@ -26,42 +26,44 @@ export const getCartById = async (req,res) => {
 	}
 };
 
-export const getCartByUser = async (req,res) => {
+export const getCartByUser = async (req, res) => {
 	try {
 		const userId = req.params.id;
-		const cart = await Cart.findOne({user: userId})
-			.populate("products.product");
-		if(!cart) {
-			return res.status(404)
-				.json({message: "No cart found for this user"});
+		const cart = await Cart.findOne({ user: userId }).populate(
+			"products.product",
+		);
+		if (!cart) {
+			return res
+				.status(404)
+				.json({ message: "No cart found for this user" });
 		}
 		res.json(cart);
 	} catch (error) {
 		console.error(error);
 	}
-}
+};
 
 const validateCart = (req, res) => {
 	const { user, products } = req.body;
 	if (!user || !products || !Array.isArray(products)) {
 		return res
 			.status(404)
-			.json({ error: "User and products array is required."});
+			.json({ error: "User and products array is required." });
 	}
 
-	for(let i = 0; i < products.length; i++) {
+	for (let i = 0; i < products.length; i++) {
 		if (
-			!products[i].product || 
-			!products[i].quantity || 
+			!products[i].product ||
+			!products[i].quantity ||
 			products[i].quantity < 1
 		) {
-			return res
-				.status(404)
-				.json({ error: `Each product muyst have product ID and 
-					quantity >= 1.`});
+			return res.status(404).json({
+				error: `Each product muyst have product ID and
+					quantity >= 1.`,
+			});
 		}
 	}
-}
+};
 
 export const createCart = async (req, res) => {
 	try {
@@ -69,7 +71,7 @@ export const createCart = async (req, res) => {
 
 		const newCart = await Cart.create({
 			user,
-			products
+			products,
 		});
 
 		await newCart.populate("user");
@@ -78,9 +80,8 @@ export const createCart = async (req, res) => {
 		res.status(201).json(newCart);
 	} catch (error) {
 		console.error(error);
-		
 	}
-}
+};
 
 export const updateCart = async (req, res) => {
 	try {
@@ -101,13 +102,12 @@ export const updateCart = async (req, res) => {
 		}
 	} catch (error) {
 		console.error(error);
-		
 	}
-}
+};
 
 export const deleteCart = async (req, res) => {
 	try {
-		const {id}=req.params;
+		const { id } = req.params;
 		const deletedCart = await Cart.findByIdAndDelete(id);
 		if (deletedCart) {
 			return res.status(204).send();
@@ -117,4 +117,4 @@ export const deleteCart = async (req, res) => {
 	} catch (error) {
 		console.error(error);
 	}
-}
+};
