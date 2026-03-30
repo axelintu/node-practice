@@ -1,0 +1,16 @@
+{
+	"name": "videogamesstore",
+	"version": "1.0.0",
+	"description": "A video game store api",
+	"license": "ISC",
+	"author": "axelintu (github.com/axelintu)",
+	"type": "module",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon server.js"
+	},
+	"dependencies": {
+		"mongoose": "^9.3.3"
+	}
+}
