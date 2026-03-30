@@ -1,8 +1,8 @@
 // controllers/videojuegoController.js
-import VideoGame from "../models/VideoGame";
+import VideoGame from "../models/VideoGame.js";
 
 // CONTROLADOR: LEER CATÁLOGO
-export const obtenerVideojuegos = async () => {
+export const getVideoGames = async () => {
 	try {
 		// 🚨 TU TURNO: Usa el modelo Videojuego y su método de Mongoose para traer todo el catálogo
 		// Pista: const juegos = await Videojuego...
