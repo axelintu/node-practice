@@ -10,12 +10,12 @@ app.use(express.json());
 
 connectDB();
 
-app.get("/", ()=> {
+app.get("/", () => {
 	res.send("API Ecommerce con MongoDB");
 });
 
 app.use("/api", routes);
 
-app.listen(port, ()=>{
+app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
 })

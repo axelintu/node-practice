@@ -5,7 +5,7 @@ const categorySchema = new mongoose.Schema(
 		name: { type: String, required: true, trim: true },
 		description: { type: String, requiredTrue },
 		imageURL: {
-			type: "String",
+			type: String,
 			required: true,
 			default: "https://placehold.co/800x600.png",
 		},
