@@ -1,4 +1,11 @@
+import bcrypt from "bcrypt";
 import User from "../models/User.js";
+
+const generatePassword = async (pass) => {
+	const saltRounds = 10;
+	return await bcrypt.hash(pass, saltRounds);
+}
+
 
 const getUsers = async (req, res, next) => {
 	try {
@@ -25,7 +32,15 @@ const getUserById = async (req, res, next) => {
 const createUser = async (req, res, next) => {
 	try {
 		const { name, email, password, role } = req.body;
-		const newUser = await User.create({ name, email, password, role });
+		const hashPassword = await generatePassword(password);
+		const newUser = await User.create(
+			{
+				name,
+				email,
+				password: hashPassword,
+				role
+			}
+		);
 		const userResponse = newUser.toObject();
 		delete userResponse.password;
 		res.status(201).json(userResponse);
@@ -37,10 +52,11 @@ const createUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
 	try {
 		const { id } = req.params;
-		const { name, email, role } = req.body;
+		const { name, email, role, password } = req.body;
+		const hashPassword = await generatePassword(password);
 		const updatedUser = await User.findByIdAndUpdate(
 			id,
-			{ name, email, role },
+			{ name, email, password: hashPassword, role },
 			{ new: true }
 		).select("-password");
 		if (!updatedUser) {
